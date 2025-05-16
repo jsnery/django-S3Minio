@@ -92,12 +92,12 @@ class Example2(models.Model):
 
     def save(self, *args, **kwargs):
         s3.webp_converter(self.image_1, self.image_2)
-        super(Example, self).save(*args, **kwargs) # It seems there's a typo here, should likely be super(Example2, self)
+        super(Example2, self).save(*args, **kwargs)
         s3.upload(self.image_1.name, self.image_2.name)
         
     def delete(self, *args, **kwargs):
         s3.delete(self.image_1.name, self.image_2.name)
-        super(Example, self).delete(*args, **kwargs) # It seems there's a typo here, should likely be super(Example2, self)
+        super(Example2, self).delete(*args, **kwargs)
         
     @property
     def get_image_1(self):
