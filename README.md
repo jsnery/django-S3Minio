@@ -15,6 +15,11 @@ This module was developed to facilitate the integration of Django projects with 
 Execute in the terminal:
 
 ```
+pip install boto3 Pillow
+```
+
+For use in django run:
+```
 pip install django boto3 django-storages Pillow
 ```
 
