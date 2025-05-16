@@ -1,0 +1,1 @@
+# django-S3Minio
