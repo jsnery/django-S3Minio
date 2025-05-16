@@ -65,8 +65,14 @@ This utility was designed for direct use in Django Models. To work correctly, it
 ```python
 from django.db import models
 from utils.s3_minio import S3Minio, generate_image_filename
+from django.conf import settings
 
-s3 = S3Minio()
+s3 = S3Minio(
+    endpoint_url=settings.AWS_S3_ENDPOINT_URL,
+    access_key_id=settings.AWS_ACCESS_KEY_ID,
+    secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
+    bucket_name=settings.AWS_STORAGE_BUCKET_NAME,
+)
 
 class Example(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
@@ -116,7 +122,13 @@ class Example2(models.Model):
 ```python
 from utils.s3_minio import S3Minio
 
-s3 = S3Minio()
+
+s3 = S3Minio(
+    endpoint_url='endpoint_url',
+    access_key_id='access_key_id',
+    secret_access_key='secret_access_key',
+    bucket_name='bucket_name',
+)
 s3.upload('path/to/file.jpg')
 url = s3.get_url('path/to/file.jpg')
 s3.delete('path/to/file.jpg')
