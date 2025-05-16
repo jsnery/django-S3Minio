@@ -149,7 +149,7 @@ class S3Minio:
         try:
             from django.core.files.base import ContentFile  # pylint: disable=import-outside-toplevel
         except ImportError as exc:
-            raise ImportError("Convert Error (Exclusive to Django models) | pip install django") from exc
+            raise ImportError("Convert Error (Exclusive to Django models) | pip install django django-storages") from exc
 
         for image in args:
             try:
@@ -166,7 +166,7 @@ class S3Minio:
                             image.name = image.name.replace(e, ".webp")
                             break
                     except Exception as exc:
-                        raise ValueError("Converter Error (Exclusive to Django models) | pip install django") from exc
+                        raise ValueError("Converter Error (Exclusive to Django models) | pip install django django-storages") from exc
 
                 return ContentFile(buffer.getvalue())
 
